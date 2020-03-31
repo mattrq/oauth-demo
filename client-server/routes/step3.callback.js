@@ -66,6 +66,7 @@ const handler = async (request, h) => {
   );
 
   // Display content
+  // See: client-server/templates/step7-show-resource.html
   return h.view('step7-show-resource', {
     payload,
     accessDetails,

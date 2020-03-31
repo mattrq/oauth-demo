@@ -52,10 +52,15 @@ The key files are as follows, the documented with in the files:
   Check the details received
   Generate a JWT
 - `authorization-server/helpers/step5.generate-jwt.js`
-  Generate a JWT and sign it
+  Generate a JWT access token and sign it
 - Continue from `client-server/routes/step3.callback.js`
   Uses the access token to fetch content
-- `client-server/templates/step6-show-resource.html`
+- `resource-server/routes/step6.get-resource.js`
+  Verify the JWT access token
+  Send back the content
+- Continue from `client-server/routes/step3.callback.js`
+  Display the content
+- `client-server/templates/step7-show-resource.html`
 
 ### The request flow diagram
 

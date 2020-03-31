@@ -57,6 +57,8 @@ const generateJwtRS512 = (privateKey, payload) => {
   // Add the signature as a URL safe Base 64 on to the end of the combined
   // header and payload with a "." as separator
   return `${toSign}.${base64Url(signature)}`;
+
+  // Go back to to file: /client-server/routes/step3.callback.js
 };
 
 module.exports = generateJwtRS512;
