@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css">
+  <title>Document</title>
+</head>
+<body style="background-color: #FDD;">
+  <nav class="border fixed split-nav">
+    <div class="nav-brand">
+      <h3>Authorization Server</h3>
+    </div>
+    <div class="collapsible">
+      <div class="collapsible-body">
+        <ul class="inline">
+          <li><a href="#">Github</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="row flex-center flex-middle" style="min-height: 100vh;">
+    <div class="card sm-4" style="background-color: #FFF;">
+      <div class="card-header">Authorization access request</div>
+      <div class="card-body">
+        <h5 class="card-subtitle">Hi {{name}}</h5>
+        <p class="card-text">
+            You have been requested to authorize &quot;{{host}}&quot; to access the following scopes:
+        </p>
+        <div class="row child-borders">
+          <div class="col col-12 border borer-white">{{scope}}</div>
+        </div>
+        <p class="card-text">
+          How would you like to proceed?
+        </p>
+        <div class="row flex-spaces">
+            <a href="{{acceptUrl}}" class="btn-success sm-4 col paper-btn">Authorize</a>
+            <a href="{{declineUrl}}" class="btn-danger sm-4 col paper-btn">Decline</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

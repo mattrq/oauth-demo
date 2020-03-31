@@ -1,0 +1,59 @@
+
+version: '3.7'
+services:
+  client:
+    container_name: client
+    build: .
+    volumes:
+      - ./client-server:/src/client-server
+      - ./shared:/src/shared
+    working_dir: /src
+    command: npm run dev-client
+    ports:
+      - 8080:8080
+    networks: 
+      - frontend
+    depends_on:
+      - authorization
+  resource:
+    container_name: resource
+    build: .
+    volumes:
+      - ./resource-server:/src/resource-server
+      - ./shared:/src/shared
+    working_dir: /src
+    command: npm run dev-resource
+    ports:
+      - 8082:8082
+    networks: 
+      - frontend
+    depends_on:
+      - authorization
+  authorization:
+    container_name: authorization
+    build: .
+    volumes:
+      - ./authorization-server:/src/authorization-server
+      - ./shared:/src/shared
+    working_dir: /src
+    command:  npm run dev-authorization  
+    ports:
+     - 8081:8081
+    links:
+     - db
+    networks: 
+      - frontend
+      - backend
+    depends_on:
+        - db
+  db:
+    container_name: db
+    image: mongo
+    ports:
+      - 27017:27017
+    networks: 
+      - backend
+    
+networks:
+  frontend:
+  backend:

@@ -1,0 +1,9 @@
+[
+  {
+    "_id": "5e7bdd84a4e68d0497872f6f",
+    "username": "john",
+    "password": "$2a$10$iqJSHD.BGr0E2IxQwYgJmeP3NvhPrXAeLSaGCj6IR/XU5QtjVu5Tm",
+    "name": "John Doe",
+    "email": "jd@example.com"
+  }
+]

@@ -1,0 +1,44 @@
+{
+  "name": "authserver",
+  "version": "1.0.0",
+  "description": "OAuth Server",
+  "main": "server.js",
+  "dependencies": {
+    "@hapi/basic": "^6.0.0",
+    "@hapi/boom": "^9.1.0",
+    "@hapi/hapi": "^19.1.1",
+    "@hapi/joi": "^17.1.1",
+    "@hapi/vision": "^6.0.0",
+    "@hapi/wreck": "^17.0.0",
+    "@hapi/yar": "^10.1.0",
+    "bcrypt": "^4.0.1",
+    "crypto-random-string": "^3.2.0",
+    "handlebars": "^4.7.3",
+    "hapi-pino": "^6.5.0",
+    "moment": "^2.24.0",
+    "mongoose": "^5.9.7"
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.1",
+    "nodemon": "^2.0.2",
+    "prettier": "^2.0.2"
+  },
+  "scripts": {
+    "dev-authorization": "nodemon --watch shared --watch authorization-server -e js,html ./authorization-server/.server.js",
+    "dev-client": "nodemon --watch shared --watch client-server -e js,html ./client-server/.server.js",
+    "dev-resource": "nodemon --watch shared --watch resource-server -e js,html ./resource-server/.server.js",
+    "start": "concurrently \"npm:dev-authorization\" \"npm:dev-client\" \"npm:dev-resource\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matt Rosenquist <mattrq@gmail.com>",
+  "license": "MIT"
+}
