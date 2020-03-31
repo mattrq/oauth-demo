@@ -2,9 +2,9 @@ const crypto = require('crypto');
 
 // Make Base 64 url friendly
 // By:
-// Remove "="" (use for padding only)
-// Change "+" to "-"
-// Change "/" to "_"
+//  - Remove "="" (used for padding only)
+//  - Change "+" to "-"
+//  - Change "/" to "_"
 const base64Url = str =>
   str.replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
 

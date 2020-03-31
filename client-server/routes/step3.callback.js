@@ -4,6 +4,21 @@ const Wreck = require('@hapi/wreck');
 const config = require('../config');
 
 const handler = async (request, h) => {
+  // Format the error to get better information for developing
+  const handleWreckError = err => {
+    if (err.isBoom && err.data && err.data.isResponseError) {
+      throw Boom.badGateway(
+        `${err.data.payload.message}; ${JSON.stringify(
+          err.data.payload
+        )}`,
+        err.data
+      );
+    }
+
+    throw err;
+  };
+
+  // Destruct the query
   const {
     code,
     error_description: errorDescription,
@@ -50,7 +65,7 @@ const handler = async (request, h) => {
   const { payload: accessDetails } = await Wreck.get(
     tokenRequestUrl,
     { json: true }
-  );
+  ).catch(handleWreckError);
 
   // Now we fetch the content from the resource server
   // The "access token" is added as a Bearer token
@@ -63,11 +78,11 @@ const handler = async (request, h) => {
         authorization: `Bearer ${accessDetails.access_token}`,
       },
     }
-  );
+  ).catch(handleWreckError);
 
   // Display content
-  // See: client-server/templates/step7-show-resource.html
-  return h.view('step7-show-resource', {
+  // See: client-server/templates/step8-show-resource.html
+  return h.view('step8-show-resource', {
     payload,
     accessDetails,
   });

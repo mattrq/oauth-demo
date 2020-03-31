@@ -40,7 +40,7 @@ const startServer = async (
     },
   });
 
-  await initFunction(server);
+  await initFunction(server, { isDev });
 
   Handlebars.registerHelper('json', data =>
     JSON.stringify(data, null, 4)
