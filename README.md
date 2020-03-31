@@ -21,10 +21,11 @@ The demo comprises of three servers:
 ### Setup and run
 
 - Open `terminal` and navigate to `dir` of your choice
-- Run `git clone TODO ADD REPO`
-- RUN `cd TODO ADD REPONAME`
+- Run `git clone https://github.com/mrosenquist/oauth-demo.git` or `git clone git@github.com:mrosenquist/oauth-demo.git`
+- RUN `cd oauth-demo`
 - Run `docker-compose up --build`
-- Open web browser at http://localhost:8080
+- Open web browser at http://localhost:8080 and follow the flow
+- Login with user: `john` pass: `secret`
 
 ## Explanation of work
 
@@ -36,7 +37,27 @@ The demo comprises of three servers:
 
 _Note: the `shared` directory houses much of the code that runs the servers or sets up the database, but is not needed to understand the auth flows_
 
-### The request flow
+The key files are as follows, the documented with in the files:
+
+- `client-server/routes/step1.start.js`
+  Creates the link to the OAuth Server
+  And show a user interface
+- `authorization-server/routes/step2.authorize.js`
+  Read the information and asks the user if they wish to _accept_ or _decline_ the request
+  Send the use back to the client server with an _authorization code_
+- `client-server/routes/step3.callback.js`
+  Check the details received
+  Exchanges the _authorization code_ for an _access token_
+- `authorization-server/routes/step4.get-token.js`
+  Check the details received
+  Generate a JWT
+- `authorization-server/helpers/step5.generate-jwt.js`
+  Generate a JWT and sign it
+- Continue from `client-server/routes/step3.callback.js`
+  Uses the access token to fetch content
+- `client-server/templates/step6-show-resource.html`
+
+### The request flow diagram
 
 ```text
 

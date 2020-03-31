@@ -54,7 +54,7 @@ const handler = async (request, h) => {
 
   // Now we fetch the content from the resource server
   // The "access token" is added as a Bearer token
-  // next step go to file: /resource-server/routes/step5.get-resource.js
+  // next step go to file: /resource-server/routes/step6.get-resource.js
   const { payload } = await Wreck.get(
     'http://resource:8082/content/123',
     {
@@ -66,7 +66,7 @@ const handler = async (request, h) => {
   );
 
   // Display content
-  return h.view('step6-show-resource', {
+  return h.view('step7-show-resource', {
     payload,
     accessDetails,
   });
