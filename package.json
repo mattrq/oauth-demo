@@ -16,7 +16,7 @@
     "handlebars": "^4.7.3",
     "hapi-dev-errors": "^4.0.0",
     "hapi-pino": "^6.5.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "mongoose": "^5.9.7"
   },
   "devDependencies": {
